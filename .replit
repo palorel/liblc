@@ -1,0 +1,2 @@
+language = "bash"
+run = "gcc `find . -name '*.c'` -I inc -o main -lm && ./main"
