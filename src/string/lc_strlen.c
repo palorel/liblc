@@ -1,10 +1,13 @@
 #include <stddef.h>
 
-size_t lc_strlen (const char *s)
+size_t		lc_strlen(const char *str)
 {
-	int l;
+    size_t l = 0;
 
-	while (*s++)
-		++l;
-	return(l);
+    while (*str)
+    {
+        ++l;
+        ++str;
+    }
+    return (l);
 }
