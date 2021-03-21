@@ -7,7 +7,7 @@ char		*lc_strrchr(const char *s, int c)
     while (*s)
     {
         if (*s == c)
-            l = s;
+            l = (char *)s;
         ++s;
     }   
     return (l);

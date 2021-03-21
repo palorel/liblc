@@ -6,6 +6,7 @@
 
 #ifndef FT_STRING_H
 #define FT_STRING_H
+#include <stddef.h>
 
 size_t		lc_strlen(const char *str);//
 size_t		lc_strnlen(const char *s, size_t maxlen);//
@@ -26,7 +27,7 @@ char		**lc_strstrs(const char **strs, const char *needle);
 
 int			lc_strcmp(const char *s1, const char *s2);//
 
-int			lc_strncmp(const char *s1, const char *s2, size_t n)
+int			lc_strncmp(const char *s1, const char *s2, size_t n);
 
 char		*lc_strcpy(char *dest, const char *src);
 char		*lc_strncpy(char *dest, const char *src, size_t n);

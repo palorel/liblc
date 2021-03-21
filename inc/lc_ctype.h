@@ -9,7 +9,7 @@
 
 int		lc_isalpha(int c);//
 int		lc_isblank(int c);//
-int		lc_isspace(int c);
+int		lc_isspace(int c);//
 int		lc_isascii(int c);//
 int		lc_isalnum(int c);//
 int		lc_iscntrl(int c);

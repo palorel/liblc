@@ -1,4 +1,4 @@
 int		lc_isblank(int c)
 {
-    return (c > 0);
+    return (c == '\t' || c == ' ');
 }

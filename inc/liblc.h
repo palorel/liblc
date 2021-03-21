@@ -12,5 +12,6 @@
 #include "lc_string.h"
 #include "lc_math.h"
 #include "lc_tab.h"
+#include "lc_ctype.h"
 
 #endif

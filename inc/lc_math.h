@@ -7,6 +7,6 @@
 #ifndef FT_MATH_H
 # define FT_MATH_H
 
-
+int gcd(int a, int b);
 
 #endif

@@ -1,10 +1,11 @@
 #include <stddef.h>
+#include "lc_string.h"
 
 char		*lc_strstr(const char *str, const char *needle)
 {
     int k = 0;
     int l = 0;
-    char needle_2;
+    const char *needle_2;
 
     needle_2 = needle;
     k = lc_strlen(needle);
@@ -13,7 +14,7 @@ char		*lc_strstr(const char *str, const char *needle)
         if (*str == *needle)
         {
             if (k == l)
-                return (s);
+                return ((char *)str);
             else
             {
                 ++l;

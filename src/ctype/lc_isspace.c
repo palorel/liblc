@@ -1,4 +1,4 @@
 int		lc_isspace(int c)
 {
-    return (c == 32);
+    return ((c >= '\t' && c <= '\r') || c == ' ');
 }
