@@ -1,4 +1,4 @@
-lc_isgraph(int c)
+int lc_isgraph(int c)
 {
     return ('!' <= c && c <= '~');
 }

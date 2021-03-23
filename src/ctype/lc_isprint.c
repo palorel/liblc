@@ -1,4 +1,4 @@
-lc_isprint(int c)
+int lc_isprint(int c)
 {
     return (' ' <= c && c <= '~');
 }
