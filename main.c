@@ -36,7 +36,23 @@ void lc_push_front(t_list **head, void *data)
 	}
 }
 
-void lc_push_back(t_list **head, void *data);
+void lc_push_back(t_list **head, void *data)
+{
+    t_list *new = 0;
+
+    while (head)
+    {
+        new = head;
+        ++head;
+    }
+    t_list *temp = lc_new(data);
+    head = new;
+
+    if (temp)
+    {
+        temp->next = *head;
+    }
+}
 void *lc_pop_front(t_list **head); // return pointer to data
 void *lc_pop_back(t_list **head);
 size_t lc_size(t_list *head);
