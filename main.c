@@ -68,21 +68,19 @@ void lc_push_back(t_list **head, void *data)
 void *lc_pop_front(t_list **head)
 {
     if (!head || !*head)
-        return ;
+        return NULL;
 	t_list *last = NULL;
     t_list *walker = NULL;
     void *data = NULL;
 
-    last = lc_last(head);
+    last = lc_last(*head);
     if (last)
         return NULL;
-    walker = head;
-    head = head->next;
+    walker = *head;
+    *head = (*head)->next;
     data = walker->data;
     free(walker);
     return (data);
-
-    
 }
 
 void *lc_pop_back(t_list **head)
@@ -125,13 +123,16 @@ void lc_free(t_list **head, void (*free_func)(void *))
     t_list *walker = NULL;
 
     if (!head)
-        return NULL;
+		return ;
     while (walker)
     {
-        head = head->next;
-        walker = head;
-        free_func(head);
+		if (free_func)
+			free_func((*head)->data);
+        walker = *head;
+		*head = (*head)->next;
+        free(walker);
     }
+	*head = NULL;
 }
 
 void lc_foreach(t_list *head, void (*f)(void *))
@@ -139,9 +140,8 @@ void lc_foreach(t_list *head, void (*f)(void *))
     while (head)
     {
         f(head->data);
-        head = head->next;!head
-
-   }
+        head = head->next;
+    }
 }
 
 void print_list(t_list *head)
@@ -179,6 +179,8 @@ void lc_list_fill_rand(void *data)
 
 int main(int argc, char **argv)
 {
+	/*
+	
 	size_t size = 5;
 	int *arr = malloc(size * sizeof(int));
 	t_list *head = NULL;
@@ -202,6 +204,8 @@ int main(int argc, char **argv)
 
 	printf("%20p\n\n", head);
 	print_list(head);
+	
+	*/
 
     // lc_foreach(head, lc_print_int);
 
@@ -210,5 +214,68 @@ int main(int argc, char **argv)
 	// action = &lc_push_front;
 	// action(&head, NULL);
 
-    return 0;
+
+
+    /*int rows = 0;
+    int cols = 0;
+    int **matrix;
+    int k = 1;
+    int r = 1;
+    int l = 0;
+    int z = 3;
+
+    scanf("%d", &rows);
+    scanf("%d", &cols);
+    
+	matrix = (int**)malloc(rows * sizeof(int*));
+	for (int i = 0; i < rows; ++i)
+    {
+        matrix[i] = (int*)malloc(cols * sizeof(int));
+		for (int j = 0; j < cols; ++j)
+        {
+        }
+    }
+
+    for (int i = 0; i < rows; ++i)
+    {
+        for (int j = 0; j < cols; ++j)
+        {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    }*/
+
+	
+	FILE *fp = fopen("main.c", "r");
+
+	if (!fp)
+		return (0);
+
+	//fopen();
+	//fclose();
+
+	//feof();
+	//fread();
+	//fwrite();
+
+	//fseek();
+
+	//fgetc();
+	//fputc();
+
+	//fgets();
+	//fputs();
+
+	//fscanf();
+	//fprintf();
+
+	while (!feof(fp))
+	{
+		printf("%c", fgetc(fp));
+	}
+
+	fclose(fp);
+
+    return (0);
 }
+//кол-во слов кол-во чисел
