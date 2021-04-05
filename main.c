@@ -179,6 +179,8 @@ void lc_list_fill_rand(void *data)
 
 int main(int argc, char **argv)
 {
+    int k = 0;
+    int d = 0;
 	/*
 	
 	size_t size = 5;
@@ -271,11 +273,16 @@ int main(int argc, char **argv)
 
 	while (!feof(fp))
 	{
-		printf("%c", fgetc(fp));
+		if (fgetc(fp) == ' ')
+            ++k;
+        if ('0'<= fgetc(fp) && fgetc(fp) <= '9')
+            ++d;
+
 	}
-
 	fclose(fp);
-
+    ++k;
+    printf("%d\n", k);
+    printf("%d", d);
     return (0);
 }
 //кол-во слов кол-во чисел
