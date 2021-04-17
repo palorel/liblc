@@ -177,10 +177,66 @@ void lc_list_fill_rand(void *data)
 		*(int*)data = rand() % 100;
 }
 
+int words_count(char *k)
+{
+    int n = 0;
+    int number = 0;
+
+	if (k)
+		while (*k)
+		{
+			if (lc_isalnum(*k))
+			{
+				if (n == 0)
+					++number;
+				n = 1;
+			}
+			else
+				n = 0;
+			++k;
+		}
+    return (number);
+}
+
+int wc(void)
+{
+    int k = 0;
+    int d = 0;
+    int n = 1;
+
+    FILE *fp = fopen("main.c", "r");
+
+	if (!fp)
+		return (0);
+	while (!feof(fp))
+	{
+		char c = fgetc(fp);
+		if (lc_isalpha(c))
+        {
+			k += (n == 1);
+            n = 0;
+        }
+		else if (lc_isdigit(c))
+        {
+			d += (n == 1);
+			n = 2;
+		}
+        else
+        {
+            n = 1;
+        }
+	}
+	fclose(fp);
+    printf("%d\n", k);
+    printf("%d", d);
+    return (d);
+}
+
 int main(int argc, char **argv)
 {
     int k = 0;
     int d = 0;
+    int n = 1;
 	/*
 	
 	size_t size = 5;
@@ -216,73 +272,32 @@ int main(int argc, char **argv)
 	// action = &lc_push_front;
 	// action(&head, NULL);
 
+	int **matrix = NULL;
+    int size = 0;
 
-
-    /*int rows = 0;
-    int cols = 0;
-    int **matrix;
-    int k = 1;
-    int r = 1;
-    int l = 0;
-    int z = 3;
-
-    scanf("%d", &rows);
-    scanf("%d", &cols);
+    scanf("%d", &size);
     
-	matrix = (int**)malloc(rows * sizeof(int*));
-	for (int i = 0; i < rows; ++i)
+	// [a, b]
+
+	matrix = (int **)malloc(size * sizeof(int *));
+	for (int i = 0; i < size; ++i)
     {
-        matrix[i] = (int*)malloc(cols * sizeof(int));
-		for (int j = 0; j < cols; ++j)
-        {
-        }
+        // matrix[i] = (int *)malloc(size * sizeof(int));
+		matrix[i] = (int *)calloc(size, sizeof(int));
     }
 
-    for (int i = 0; i < rows; ++i)
+    for (int j = 0; j < size; ++j)
     {
-        for (int j = 0; j < cols; ++j)
+		matrix[j][j] = 1;
+    }
+    for (int i = 0; i < size; ++i)
+    {
+        for (int j = 0; j < size; ++j)
         {
             printf("%d ", matrix[i][j]);
         }
-        printf("\n");
-    }*/
+		printf("\n");
+    }
 
-	
-	FILE *fp = fopen("main.c", "r");
-
-	if (!fp)
-		return (0);
-
-	//fopen();
-	//fclose();
-
-	//feof();
-	//fread();
-	//fwrite();
-
-	//fseek();
-
-	//fgetc();
-	//fputc();
-
-	//fgets();
-	//fputs();
-
-	//fscanf();
-	//fprintf();
-
-	while (!feof(fp))
-	{
-		if (fgetc(fp) == ' ')
-            ++k;
-        if ('0'<= fgetc(fp) && fgetc(fp) <= '9')
-            ++d;
-
-	}
-	fclose(fp);
-    ++k;
-    printf("%d\n", k);
-    printf("%d", d);
     return (0);
 }
-//кол-во слов кол-во чисел
