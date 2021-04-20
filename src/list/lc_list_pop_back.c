@@ -4,9 +4,21 @@
 /* contacts:      mail@main.ru                                                */
 /* ************************************************************************** */
 
-int lc_isalnum(int c)
+#include <lc_list.h>
+#include <stdlib.h>
+
+void	*lc_list_pop_back(t_list *list)
 {
-	return (('0' <= c && c <= '9') ||
-			('A' <= c && c <= 'Z') ||
-			('a' <= c && c <= 'z'));
+    void *data = NULL;
+    t_list_item *walker = NULL;
+
+    if (!list || !list->tail)
+        return NULL;
+    walker = list->tail;
+    if (list->size == 1)
+        list->head = NULL;
+    list->tail = list->tail->prev;
+    data = walker->data;
+    --list->size;
+    return(data);
 }

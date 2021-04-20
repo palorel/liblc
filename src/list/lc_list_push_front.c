@@ -11,7 +11,7 @@ void	lc_list_push_front(t_list *list, void *data)
 {
 	if (!list)
 		return ;
-    t_list *temp = lc_list_item_new(data);
+    t_list_item *temp = lc_list_item_new(data);
     if (temp)
 	{
         temp->next = list->head;

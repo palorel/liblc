@@ -9,7 +9,7 @@
 
 void	lc_list_free(t_list *list, void (*f)(void*))
 {
-    t_list *walker = NULL;
+    t_list_item *walker = NULL;
 
     if (!list || !list->head)
 		return ;

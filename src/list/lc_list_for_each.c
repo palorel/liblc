@@ -4,9 +4,20 @@
 /* contacts:      mail@main.ru                                                */
 /* ************************************************************************** */
 
-int lc_isalnum(int c)
+#include <lc_list.h>
+#include <stdlib.h>
+
+void	lc_list_for_each(t_list *list, void (*f)(void *))
 {
-	return (('0' <= c && c <= '9') ||
-			('A' <= c && c <= 'Z') ||
-			('a' <= c && c <= 'z'));
+    size_t pos_1 = 0;
+
+	if (!list)
+		return ;
+    while (pos_1 < list->size)
+    {
+        if (f)
+            f(list->head->data);
+        list->head = list->head->next;
+        ++pos_1;
+    }
 }

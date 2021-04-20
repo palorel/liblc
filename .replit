@@ -1,2 +1,2 @@
 language = "bash"
-run = "gcc `find . -name '*.c'` -I inc -o main -lm && ./main"
+run = "gcc -Wall -Wextra `find . -name '*.c'` -I inc -o main -lm && ./main"

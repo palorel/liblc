@@ -6,10 +6,12 @@
 
 #include <stdlib.h>
 #include <lc_list.h>
-void                    lc_list_del_at(t_list *list, size_t pos, void (*f)(void))
+
+void	lc_list_del_at(t_list *list, size_t pos, void (*f)(void*))
 {
     t_list_item		*walker = list->head;
     size_t pos_0 = 1;
+    
     while (list->head)
     {
         if (pos_0 == pos - 1)
